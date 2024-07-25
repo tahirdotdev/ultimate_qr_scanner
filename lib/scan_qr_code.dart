@@ -7,6 +7,7 @@ class ScanQrCode extends StatefulWidget {
   @override
   State<ScanQrCode> createState() => _ScanQrCodeState();
 }
+
 class _ScanQrCodeState extends State<ScanQrCode> {
   String qrResult = 'Scanned data will appear';
   Future<void> scanQR() async {
@@ -21,11 +22,15 @@ class _ScanQrCodeState extends State<ScanQrCode> {
       qrResult = 'Failed to read QR Code';
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xff162f48),
       appBar: AppBar(
         title: const Text('QR Code Scanner'),
+        backgroundColor: const Color(0xff162f48),
+        foregroundColor: Colors.white,
       ),
       body: Center(
         child: Column(
@@ -36,18 +41,27 @@ class _ScanQrCodeState extends State<ScanQrCode> {
             ),
             Text(
               qrResult,
-              style: const TextStyle(color: Colors.black),
+              style: const TextStyle(color: Colors.white, fontSize: 18),
             ),
             const SizedBox(
               height: 30,
             ),
-            ElevatedButton(onPressed: scanQR,
-                style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blue,
-                foregroundColor: Colors.white,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                elevation: 10
-            ), child: const Text('Scan QR Code'),)
+            ElevatedButton(
+              onPressed: scanQR,
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue,
+                  foregroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(35)),
+                  elevation: 10),
+              child: const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Text(
+                  'Scan QR Code',
+                  style: TextStyle(fontSize: 28),
+                ),
+              ),
+            )
           ],
         ),
       ),

@@ -6,12 +6,16 @@ class GenerateQrCode extends StatefulWidget {
   @override
   State<GenerateQrCode> createState() => _GenerateQrCodeState();
 }
+
 class _GenerateQrCodeState extends State<GenerateQrCode> {
   TextEditingController urlControl = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xff162f48),
       appBar: AppBar(
+        backgroundColor: const Color(0xff162f48),
+        foregroundColor: Colors.white,
         title: const Text('Generate QR Code'),
       ),
       body: Center(
@@ -32,10 +36,20 @@ class _GenerateQrCodeState extends State<GenerateQrCode> {
                 child: TextField(
                   controller: urlControl,
                   decoration: InputDecoration(
-                      hintText: 'Enter your data',
+                      labelStyle: const TextStyle(color: Colors.white),
+                      hintText: 'Enter Your Data',
+                      hintStyle: const TextStyle(color: Colors.grey),
                       border: OutlineInputBorder(
+                          borderSide: const BorderSide(color: Colors.white),
                           borderRadius: BorderRadius.circular(15)),
-                      labelText: 'Enter your data'),
+                      focusedBorder: OutlineInputBorder(
+                        // Focused border
+                        borderSide: const BorderSide(
+                            color: Colors.red), // Change to your desired color
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      labelText: 'To Generate QR Code'),
+                  cursorColor: Colors.red,
                 ),
               ),
               const SizedBox(
@@ -48,9 +62,9 @@ class _GenerateQrCodeState extends State<GenerateQrCode> {
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.blue,
                       foregroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                      elevation: 10
-                  ),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20)),
+                      elevation: 10),
                   child: const Text('Generate QR Code'))
             ],
           ),
